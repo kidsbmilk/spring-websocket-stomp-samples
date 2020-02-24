@@ -26,6 +26,7 @@
              * 2. SockJS 所处理的URL 是 "http://" 或 "https://" 模式，而不是 "ws://" or  "wss://"
              */
             socket = new SockJS("http://localhost:8080/stomp/websocketJS");
+            // socket = new SockJS("http://localhost:8080/stomp/websocketJS?eid=123456");
 
             // 通过sock对象监听每个事件节点，非必须,这个必须放在stompClient的方法前面
             sockHandle();
@@ -50,7 +51,7 @@
              * 3. connectCallback 表示连接成功时（服务器响应 CONNECTED 帧）的回调方法；
              *    errorCallback 表示连接失败时（服务器响应 ERROR 帧）的回调方法，非必须；
              */
-            var headers = {id:"${session_id}"};
+            var headers = {id:"${eid}"};
 
             stompClient.connect(headers,function (frame) {
 
@@ -192,5 +193,6 @@
         <input type="text" id="accountId" name="accountId">
         <input type="button" id="sendMsgById" name="sendMsgById" value="点对点消息" onclick="sendMsgById();">
     </div>
+    <input type="button" id="disconnect" name="disconnect" value="断开连接" onclick="disconnect();">
 </body>
 </html>

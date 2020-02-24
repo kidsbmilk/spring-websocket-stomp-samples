@@ -2,3 +2,5 @@ spring:
   freemarker:
     suffix: .ftl
     template-loader-path: classpath:/templates/
+server:
+  port: 8080
